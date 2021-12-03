@@ -1,7 +1,7 @@
 from pathlib import Path
 
 with (Path(__file__).parent / "../inputs/input-1.txt").open() as file:
-    input_measurements: list = [int(line) for line in file]
+    input_measurements: list[int] = [int(line) for line in file]
 
 def part_1(measurements: list[int]) -> int:
     answer: int = 0
