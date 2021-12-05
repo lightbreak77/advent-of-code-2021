@@ -1,7 +1,9 @@
 from pathlib import Path
 
-with (Path(__file__).parent / "../inputs/input-1.txt").open() as file:
-    input_measurements: list[int] = [int(line) for line in file]
+from typing import TextIO
+
+def process(file: TextIO) -> list[int]:
+    return [int(line) for line in file]
 
 def part_1(measurements: list[int]) -> int:
     answer: int = 0
@@ -22,6 +24,9 @@ def part_2(measurements: list[int]) -> int:
             answer += 1
 
     return answer
+
+with (Path(__file__).parent / "../inputs/input-1.txt").open() as input_file:
+    input_measurements: list[int] = process(input_file)
 
 print(part_1(input_measurements))
 

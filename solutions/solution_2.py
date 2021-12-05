@@ -1,7 +1,9 @@
 from pathlib import Path
 
-with (Path(__file__).parent / "../inputs/input-2.txt").open() as file:
-    input_commands: list[str] = [line.rstrip() for line in file]
+from typing import TextIO
+
+def process(file: TextIO) -> list[str]:
+    return [line.rstrip() for line in file]
 
 def part_1(commands: list[str]) -> int:
     horizontal_position: int = 0
@@ -40,6 +42,9 @@ def part_2(commands: list[str]) -> int:
             aim -= value
 
     return horizontal_position * depth
+
+with (Path(__file__).parent / "../inputs/input-2.txt").open() as input_file:
+    input_commands: list[str] = process(input_file)
 
 print(part_1(input_commands))
 

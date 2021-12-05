@@ -1,6 +1,8 @@
 from pathlib import Path
 
-def process(file) -> tuple[list[str], list[list[list[str]]]]:
+from typing import TextIO
+
+def process(file: TextIO) -> tuple[list[str], list[list[list[str]]]]:
     numbers: list[str] = [number.rstrip() for number in file.readline().split(",")]
 
     boards: list[list[list[str]]] = []

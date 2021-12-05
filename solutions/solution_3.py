@@ -1,7 +1,9 @@
 from pathlib import Path
 
-with (Path(__file__).parent / "../inputs/input-3.txt").open() as file:
-    input_numbers: list[str] = [line.rstrip() for line in file]
+from typing import TextIO
+
+def process(file: TextIO) -> list[str]:
+    return [line.rstrip() for line in file]
 
 def part_1(numbers: list[str]) -> int:
     gamma: str = ""
@@ -74,6 +76,9 @@ def part_2(numbers: list[str]) -> int:
                 co2_numbers = co2_ones
 
     return int(o2_numbers[0], 2) * int(co2_numbers[0], 2)
+
+with (Path(__file__).parent / "../inputs/input-3.txt").open() as input_file:
+    input_numbers: list[str] = process(input_file)
 
 print(part_1(input_numbers))
 
